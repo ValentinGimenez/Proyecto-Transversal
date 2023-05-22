@@ -6,6 +6,9 @@
 package proyecto.transversal;
 
 import Control.Conexion;
+import Control.DataAlumno;
+import Modelo.Alumno;
+import java.time.LocalDate;
 
 /**
  *
@@ -17,9 +20,12 @@ public class ProyectoTransversal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        //Prueba de conexión
         Conexion.getConexion();
-        
+        //Agregar alumno
+        Alumno alumno1 = new Alumno (55555555, "Perez", "Juan", LocalDate.of(1999, 5, 15), true);
+        DataAlumno dataAlumno1 = new DataAlumno();
+        dataAlumno1.guardarAlumno(alumno1);
     }
     
 }
