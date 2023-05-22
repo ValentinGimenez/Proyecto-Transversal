@@ -23,9 +23,12 @@ public class ProyectoTransversal {
         //Prueba de conexión
         Conexion.getConexion();
         //Agregar alumno
-        Alumno alumno1 = new Alumno (55555555, "Perez", "Juan", LocalDate.of(1999, 5, 15), true);
+        //Alumno alumno1 = new Alumno (55555555, "Perez", "Juan", LocalDate.of(1999, 5, 15), false);
         DataAlumno dataAlumno1 = new DataAlumno();
-        dataAlumno1.guardarAlumno(alumno1);
+        //dataAlumno1.guardarAlumno(alumno1);
+        dataAlumno1.activarAlumno(1);
+        System.out.println(dataAlumno1.buscarAlumno(1));
+        System.out.println(dataAlumno1.buscarAlumnoPorDni(22222222));
     }
     
 }
