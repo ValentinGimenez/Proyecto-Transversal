@@ -3,7 +3,6 @@ package Control;
 import Modelo.Alumno;
 import Modelo.Incripcion;
 import Modelo.Materia;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,8 +24,8 @@ public class DataInscripcion {
 
     }
 
-    public void guardarInscripcion(Inscripcion insc) {
-        String sql = "INSERT INTO inscripcion(idAlumno, idMateria, nota) VALUES (?, ?, ?)";
+    public void guardarInscripcion(Incripcion insc) {
+        String sql = "INSERT INTO incripcion(idAlumno, idMateria, nota) VALUES (?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, insc.getIdAlumno());
@@ -45,17 +44,17 @@ public class DataInscripcion {
         }
     }
 
-    public List<Inscripcion> obtenerInscripciones() {
-        List<Inscripcion> cursadas = new ArrayList<>();
+    public List<Incripcion> obtenerInscripciones() {
+        List<Incripcion> cursadas = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM inscripcion;";
+            String sql = "SELECT * FROM incripcion;";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            Inscripcion insc;
+            Incripcion insc;
 
             while (rs.next()) {
-                insc = new Inscripcion();
+                insc = new Incripcion();
                 insc.setIdInscripcion(rs.getInt("idInscripto"));
 
                 Alumno a = dataAlumno.buscarAlumno(rs.getInt("idAlumno"));
@@ -74,18 +73,18 @@ public class DataInscripcion {
         return cursadas;
     }
 
-    public List<Inscripcion> obtenerInscripcionesPorAlumno(int id) {
-        List<Inscripcion> cursadas = new ArrayList<>();
+    public List<Incripcion> obtenerInscripcionesPorAlumno(int id) {
+        List<Incripcion> cursadas = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM inscripcion WHERE idAlumno = ?;";
+            String sql = "SELECT * FROM incripcion WHERE idAlumno = ?;";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
 
-                Inscripcion inscripcion = new Inscripcion();
+                Incripcion inscripcion = new Incripcion();
                 inscripcion.setIdInscripcion(rs.getInt("idInscripto"));
 
                 Alumno a = dataAlumno.buscarAlumno(rs.getInt("idAlumno"));
@@ -99,7 +98,7 @@ public class DataInscripcion {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a Inscripcion " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a incripcion " + ex.getMessage());
         }
         return cursadas;
     }
@@ -108,9 +107,9 @@ public class DataInscripcion {
         List<Materia> materias = new ArrayList<Materia>();
 
         try {
-            String sql = "SELECT inscripcion.idMateria, nombre, año FROM inscripcion,"
-                    + " materia WHERE inscripcion.idMateria = materia.idMateria\n"
-                    + "AND inscripcion.idAlumno = ?;";
+            String sql = "SELECT incripcion.idMateria, nombre, año FROM incripcion,"
+                    + " materia WHERE incripcion.idMateria = materia.idMateria\n"
+                    + "AND incripcion.idAlumno = ?;";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -134,7 +133,7 @@ public class DataInscripcion {
 
         try {
             String sql = "SELECT * FROM materia WHERE estado = 1 AND idMateria not in "
-                    + "(SELECT idMateria FROM inscripcion WHERE idAlumno =?);";
+                    + "(SELECT idMateria FROM incripcion WHERE idAlumno =?);";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet resultSet = ps.executeQuery();
@@ -160,7 +159,7 @@ public class DataInscripcion {
 
         try {
 
-            String sql = "DELETE FROM inscripcion WHERE idAlumno =? and idMateria =?;";
+            String sql = "DELETE FROM incripcion WHERE idAlumno =? and idMateria =?;";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idAlumno);
@@ -184,7 +183,7 @@ public class DataInscripcion {
 
         try {
 
-            String sql = "UPDATE inscripcion SET nota = ? WHERE idAlumno = ? and idMateria = ?;";
+            String sql = "UPDATE incripcion SET nota = ? WHERE idAlumno = ? and idMateria = ?;";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDouble(1, nota);
@@ -211,7 +210,7 @@ public class DataInscripcion {
 
         try {
             String sql = "SELECT a.idAlumno, dni, nombre,apellido,fechaNacimiento ,estado "
-                    + "FROM inscripcion i,alumno a WHERE i.idAlumno = a.idAlumno AND idMateria = ? AND a.estado = 1;";
+                    + "FROM incripcion i,alumno a WHERE i.idAlumno = a.idAlumno AND idMateria = ? AND a.estado = 1;";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idMateria);
             ResultSet rs = ps.executeQuery();
