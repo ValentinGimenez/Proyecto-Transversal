@@ -34,7 +34,8 @@ public class MenuView extends javax.swing.JFrame {
         escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMalumno = new javax.swing.JMenu();
-        jMformularioAlumno = new javax.swing.JMenuItem();
+        jmGuardarAlumno = new javax.swing.JMenuItem();
+        jmModificarAlumno = new javax.swing.JMenuItem();
         jMmateria = new javax.swing.JMenu();
         jMformularioMateria = new javax.swing.JMenuItem();
         jMadministracion = new javax.swing.JMenu();
@@ -61,13 +62,21 @@ public class MenuView extends javax.swing.JFrame {
 
         jMalumno.setText("Alumno");
 
-        jMformularioAlumno.setText("Formulario de Alumno");
-        jMformularioAlumno.addActionListener(new java.awt.event.ActionListener() {
+        jmGuardarAlumno.setText("Guardar Alumno");
+        jmGuardarAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMformularioAlumnoActionPerformed(evt);
+                jmGuardarAlumnoActionPerformed(evt);
             }
         });
-        jMalumno.add(jMformularioAlumno);
+        jMalumno.add(jmGuardarAlumno);
+
+        jmModificarAlumno.setText("Modificar Alumno");
+        jmModificarAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmModificarAlumnoActionPerformed(evt);
+            }
+        });
+        jMalumno.add(jmModificarAlumno);
 
         jMenuBar1.add(jMalumno);
 
@@ -139,15 +148,19 @@ public class MenuView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMmanejoInscripcionesActionPerformed
 
-    private void jMformularioAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMformularioAlumnoActionPerformed
+    private void jmGuardarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmGuardarAlumnoActionPerformed
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        GestionAlumnoView gestionalumno = new GestionAlumnoView();
-        gestionalumno.setVisible(true);
-        escritorio.add(gestionalumno);
+        AgregarAlumnoView guardaralumno = new AgregarAlumnoView();
+        guardaralumno.setVisible(true);
+        escritorio.add(guardaralumno);
         
-    }//GEN-LAST:event_jMformularioAlumnoActionPerformed
+    }//GEN-LAST:event_jmGuardarAlumnoActionPerformed
+
+    private void jmModificarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmModificarAlumnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmModificarAlumnoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,11 +204,12 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMalumnosPorMateria;
     private javax.swing.JMenu jMconsultas;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMformularioAlumno;
     private javax.swing.JMenuItem jMformularioMateria;
     private javax.swing.JMenuItem jMmanejoInscripciones;
     private javax.swing.JMenuItem jMmanipulacionNotas;
     private javax.swing.JMenu jMmateria;
     private javax.swing.JMenu jMsalir;
+    private javax.swing.JMenuItem jmGuardarAlumno;
+    private javax.swing.JMenuItem jmModificarAlumno;
     // End of variables declaration//GEN-END:variables
 }
