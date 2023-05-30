@@ -62,8 +62,6 @@ public class GestionInscripcionView extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Seleccione un alumno:");
 
-        jCBoxAlumno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel3.setText("Listado de Materias");
 
         jRinscriptas.setText("Materias inscriptas");

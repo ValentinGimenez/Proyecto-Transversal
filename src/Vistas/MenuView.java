@@ -19,7 +19,7 @@ public class MenuView extends javax.swing.JFrame {
     public MenuView() {
         initComponents();
        this.setLocationRelativeTo(null);
-       this.setSize(500,520);
+       this.setExtendedState(this.MAXIMIZED_BOTH);
     }
 
     /**
@@ -53,11 +53,11 @@ public class MenuView extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 602, Short.MAX_VALUE)
+            .addGap(0, 1122, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
+            .addGap(0, 643, Short.MAX_VALUE)
         );
 
         jMalumno.setText("Alumno");
@@ -71,6 +71,7 @@ public class MenuView extends javax.swing.JFrame {
         jMalumno.add(jmGuardarAlumno);
 
         jmModificarAlumno.setText("Modificar Alumno");
+        jmModificarAlumno.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         jmModificarAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmModificarAlumnoActionPerformed(evt);
@@ -143,7 +144,6 @@ public class MenuView extends javax.swing.JFrame {
         escritorio.repaint();
         GestionInscripcionView insc = new GestionInscripcionView();
         insc.setVisible(true);
-        insc.getContentPane().setBackground(new Color(68,167,132));
         insc.add(insc);
         
     }//GEN-LAST:event_jMmanejoInscripcionesActionPerformed
@@ -155,11 +155,15 @@ public class MenuView extends javax.swing.JFrame {
         AgregarAlumnoView guardaralumno = new AgregarAlumnoView();
         guardaralumno.setVisible(true);
         escritorio.add(guardaralumno);
-        
     }//GEN-LAST:event_jmGuardarAlumnoActionPerformed
 
     private void jmModificarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmModificarAlumnoActionPerformed
         // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ModificarAlumnoView modificaralumno = new ModificarAlumnoView();
+        modificaralumno.setVisible(true);
+        escritorio.add(modificaralumno);
     }//GEN-LAST:event_jmModificarAlumnoActionPerformed
 
     /**
@@ -193,6 +197,7 @@ public class MenuView extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MenuView().setVisible(true);
+                
             }
         });
     }
