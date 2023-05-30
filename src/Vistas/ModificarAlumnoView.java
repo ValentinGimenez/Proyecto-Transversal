@@ -29,6 +29,15 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
      */
     public ModificarAlumnoView() {
         initComponents();
+        iniciarcombo();
+//        for (Alumno alumno : dataalumno.listarAlumnos()) {
+//            jcbSeleccionarAlumno.addItem(alumno);
+//        }
+    }
+
+    private void iniciarcombo() {
+        DefaultComboBoxModel<Alumno> cbox = new DefaultComboBoxModel();
+        jcbSeleccionarAlumno.setModel(cbox);
         for (Alumno alumno : dataalumno.listarAlumnos()) {
             jcbSeleccionarAlumno.addItem(alumno);
         }
@@ -276,6 +285,7 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
             return;
         }
         dataalumno.modificarAlumno(new Alumno(((Alumno) jcbSeleccionarAlumno.getSelectedItem()).getIdAlumno(), documento, apellido, nombre, fecha, ((Alumno) jcbSeleccionarAlumno.getSelectedItem()).isEstado()));
+        iniciarcombo();
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
@@ -299,6 +309,7 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if (((Alumno) jcbSeleccionarAlumno.getSelectedItem()).isEstado() == false && jrbEstado.isSelected()) {
             dataalumno.activarAlumno(((Alumno) jcbSeleccionarAlumno.getSelectedItem()).getIdAlumno());
+            iniciarcombo();
         }
 
     }//GEN-LAST:event_jrbEstadoActionPerformed
