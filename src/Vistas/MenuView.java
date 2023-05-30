@@ -18,8 +18,8 @@ public class MenuView extends javax.swing.JFrame {
      */
     public MenuView() {
         initComponents();
-       this.setLocationRelativeTo(null);
-       this.setExtendedState(this.MAXIMIZED_BOTH);
+        this.setLocationRelativeTo(null);
+        this.setExtendedState(this.MAXIMIZED_BOTH);
     }
 
     /**
@@ -154,7 +154,7 @@ public class MenuView extends javax.swing.JFrame {
         GestionInscripcionView gestioninscripcion = new GestionInscripcionView();
         gestioninscripcion.setVisible(true);
         escritorio.add(gestioninscripcion);
-        
+
     }//GEN-LAST:event_jMmanejoInscripcionesActionPerformed
 
     private void jmGuardarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmGuardarAlumnoActionPerformed
@@ -215,7 +215,7 @@ public class MenuView extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MenuView().setVisible(true);
-                
+
             }
         });
     }

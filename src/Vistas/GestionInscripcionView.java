@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Valentin
  */
 public class GestionInscripcionView extends javax.swing.JInternalFrame {
-    
+
     private ArrayList<Incripcion> listaInscrip;
     private ArrayList<Materia> listaMateria;
     private ArrayList<Alumno> listaAlumno;
@@ -27,13 +27,12 @@ public class GestionInscripcionView extends javax.swing.JInternalFrame {
     private DataMateria matData;
     private DataAlumno alumData;
     private DefaultTableModel modelo;
-    
-    
+
     public GestionInscripcionView() {
         initComponents();
         alumData = new DataAlumno();
-        listaAlumno = (ArrayList<Alumno>)alumData.listarAlumnos();
-        modelo= new DefaultTableModel();
+        listaAlumno = (ArrayList<Alumno>) alumData.listarAlumnos();
+        modelo = new DefaultTableModel();
     }
 
     /**
@@ -151,8 +150,6 @@ public class GestionInscripcionView extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAnular;

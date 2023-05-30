@@ -23,18 +23,15 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
 
     Alumno alumno;
     DataAlumno dataalumno = new DataAlumno();
-    private List<Alumno> alumnos;
 
     /**
      * Creates new form GuardarAlumnoView
      */
     public ModificarAlumnoView() {
         initComponents();
-        this.alumnos = (ArrayList<Alumno>) dataalumno.listarAlumnos();
         for (Alumno alumno : dataalumno.listarAlumnos()) {
             jcbSeleccionarAlumno.addItem(alumno);
         }
-
     }
 
     /**
@@ -56,13 +53,15 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
         jtNombre = new javax.swing.JTextField();
         jdcFechaDeNacimiento = new com.toedter.calendar.JDateChooser();
         jbNuevo = new javax.swing.JButton();
-        jbGuardar = new javax.swing.JButton();
+        jbModificar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
         panel1 = new java.awt.Panel();
         jLabel6 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
         jcbSeleccionarAlumno = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jrbEstado = new javax.swing.JRadioButton();
 
         setTitle("Modificar Alumno");
         setPreferredSize(new java.awt.Dimension(600, 600));
@@ -88,10 +87,10 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
             }
         });
 
-        jbGuardar.setText("MODIFICAR");
-        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+        jbModificar.setText("MODIFICAR");
+        jbModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbGuardarActionPerformed(evt);
+                jbModificarActionPerformed(evt);
             }
         });
 
@@ -141,6 +140,15 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Verdana", 2, 14)); // NOI18N
+        jLabel4.setText("Estado:");
+
+        jrbEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbEstadoActionPerformed(evt);
+            }
+        });
+
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -150,11 +158,13 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jtNombre, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jdcFechaDeNacimiento, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jbNuevo, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jbGuardar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jbModificar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jbSalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(panel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jcbSeleccionarAlumno, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jrbEstado, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -171,9 +181,13 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jbNuevo))
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel4))
                 .addGap(31, 31, 31)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jrbEstado)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jcbSeleccionarAlumno, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -184,7 +198,7 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jbGuardar)
+                        .addComponent(jbModificar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                         .addComponent(jbSalir)
                         .addGap(61, 61, 61))))
@@ -197,28 +211,32 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jcbSeleccionarAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
+                .addGap(32, 32, 32)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(48, 48, 48)
+                    .addComponent(jLabel1)
+                    .addComponent(jtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(40, 40, 40)
+                    .addComponent(jLabel2)
+                    .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                .addGap(29, 29, 29)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jrbEstado))
+                .addGap(30, 30, 30)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
                     .addComponent(jdcFechaDeNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevo)
-                    .addComponent(jbGuardar)
+                    .addComponent(jbModificar)
                     .addComponent(jbSalir))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         jcbSeleccionarAlumno.getAccessibleContext().setAccessibleParent(this);
@@ -237,13 +255,12 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
-    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
         // TODO add your handling code here:
         Integer documento = Integer.valueOf(jtDocumento.getText());
         String apellido = jtApellido.getText();
@@ -258,8 +275,8 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "El campo nombre se encuentra vacio.");
             return;
         }
-        dataalumno.modificarAlumno(new Alumno(((Alumno) jcbSeleccionarAlumno.getSelectedItem()).getIdAlumno(),documento, apellido, nombre, fecha, ((Alumno) jcbSeleccionarAlumno.getSelectedItem()).isEstado()));
-    }//GEN-LAST:event_jbGuardarActionPerformed
+        dataalumno.modificarAlumno(new Alumno(((Alumno) jcbSeleccionarAlumno.getSelectedItem()).getIdAlumno(), documento, apellido, nombre, fecha, ((Alumno) jcbSeleccionarAlumno.getSelectedItem()).isEstado()));
+    }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         // TODO add your handling code here:
@@ -274,24 +291,34 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
         jtDocumento.setText(String.valueOf(((Alumno) jcbSeleccionarAlumno.getSelectedItem()).getDni()));
         jtNombre.setText(String.valueOf(((Alumno) jcbSeleccionarAlumno.getSelectedItem()).getNombre()));
         jtApellido.setText(String.valueOf(((Alumno) jcbSeleccionarAlumno.getSelectedItem()).getApellido()));
+        jrbEstado.setSelected(((Alumno) jcbSeleccionarAlumno.getSelectedItem()).isEstado());
         jdcFechaDeNacimiento.setDate(java.sql.Date.valueOf(((Alumno) jcbSeleccionarAlumno.getSelectedItem()).getFechaNacimiento()));
     }//GEN-LAST:event_jcbSeleccionarAlumnoItemStateChanged
 
+    private void jrbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbEstadoActionPerformed
+        // TODO add your handling code here:
+        if (((Alumno) jcbSeleccionarAlumno.getSelectedItem()).isEstado() == false && jrbEstado.isSelected()) {
+            dataalumno.activarAlumno(((Alumno) jcbSeleccionarAlumno.getSelectedItem()).getIdAlumno());
+        }
+
+    }//GEN-LAST:event_jrbEstadoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton jbGuardar;
+    private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbNuevo;
     private javax.swing.JButton jbSalir;
     private javax.swing.JComboBox<Alumno> jcbSeleccionarAlumno;
     private com.toedter.calendar.JDateChooser jdcFechaDeNacimiento;
+    private javax.swing.JRadioButton jrbEstado;
     private javax.swing.JTextField jtApellido;
     private javax.swing.JTextField jtDocumento;
     private javax.swing.JTextField jtNombre;

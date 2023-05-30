@@ -107,7 +107,7 @@ public class DataAlumno {
 
         List<Alumno> alumnos = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM alumno WHERE estado = 1 ";
+            String sql = "SELECT * FROM alumno";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
