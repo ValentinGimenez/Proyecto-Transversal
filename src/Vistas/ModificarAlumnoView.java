@@ -218,7 +218,7 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
                     .addComponent(jbNuevo)
                     .addComponent(jbGuardar)
                     .addComponent(jbSalir))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jcbSeleccionarAlumno.getAccessibleContext().setAccessibleParent(this);
