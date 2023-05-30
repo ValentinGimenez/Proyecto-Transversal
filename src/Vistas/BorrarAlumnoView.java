@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author Valentin
  */
-public class AgregarAlumnoView extends javax.swing.JInternalFrame {
+public class BorrarAlumnoView extends javax.swing.JInternalFrame {
 
     Alumno alumno = null;
     DataAlumno dataalumno = new DataAlumno();
@@ -24,7 +24,7 @@ public class AgregarAlumnoView extends javax.swing.JInternalFrame {
     /**
      * Creates new form GuardarAlumnoView
      */
-    public AgregarAlumnoView() {
+    public BorrarAlumnoView() {
         initComponents();
     }
 
@@ -49,7 +49,7 @@ public class AgregarAlumnoView extends javax.swing.JInternalFrame {
         jrbEstado = new javax.swing.JRadioButton();
         jdcFechaDeNacimiento = new com.toedter.calendar.JDateChooser();
         jbNuevo = new javax.swing.JButton();
-        jbGuardar = new javax.swing.JButton();
+        jbEliminar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
         panel1 = new java.awt.Panel();
         jLabel6 = new javax.swing.JLabel();
@@ -83,10 +83,10 @@ public class AgregarAlumnoView extends javax.swing.JInternalFrame {
             }
         });
 
-        jbGuardar.setText("GUARDAR");
-        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+        jbEliminar.setText("ELIMINAR");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbGuardarActionPerformed(evt);
+                jbEliminarActionPerformed(evt);
             }
         });
 
@@ -103,7 +103,7 @@ public class AgregarAlumnoView extends javax.swing.JInternalFrame {
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Verdana", 2, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("GUARDAR ALUMNO");
+        jLabel6.setText("BORRAR ALUMNO");
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
@@ -144,7 +144,7 @@ public class AgregarAlumnoView extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jrbEstado, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jdcFechaDeNacimiento, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jbNuevo, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jbGuardar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jbEliminar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jbSalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(panel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jbBuscar, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -178,7 +178,7 @@ public class AgregarAlumnoView extends javax.swing.JInternalFrame {
                             .addComponent(jrbEstado))
                         .addContainerGap(82, Short.MAX_VALUE))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addComponent(jbGuardar)
+                        .addComponent(jbEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbSalir)
                         .addGap(71, 71, 71))))
@@ -213,9 +213,9 @@ public class AgregarAlumnoView extends javax.swing.JInternalFrame {
                 .addGap(52, 52, 52)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevo)
-                    .addComponent(jbGuardar)
+                    .addComponent(jbEliminar)
                     .addComponent(jbSalir))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -237,25 +237,22 @@ public class AgregarAlumnoView extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
-    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // TODO add your handling code here:
-        Integer documento = Integer.valueOf(jtDocumento.getText());
-        String apellido = jtApellido.getText();
-        String nombre = jtNombre.getText();
-        Boolean estado = jrbEstado.isSelected();
-        Date date = jdcFechaDeNacimiento.getDate();
-        LocalDate fecha = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        if (apellido.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "El campo apellido se encuentra vacio.");
-            return;
+        if (alumno != null) {
+            System.out.println(alumno.getIdAlumno());
+            dataalumno.eliminarAlumno(alumno.getIdAlumno());
+            alumno = null;
+            jtDocumento.setText("");
+            jtApellido.setText("");
+            jtNombre.setText("");
+            jrbEstado.setSelected(true);
+            jdcFechaDeNacimiento.setDate(new Date());
+        } else {
+
+            JOptionPane.showMessageDialog(this, "No hay un alumno seleccionado");
         }
-        if (nombre.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "El campo nombre se encuentra vacio.");
-            return;
-        }
-        alumno = new Alumno(documento, apellido, nombre, fecha, estado);
-        dataalumno.guardarAlumno(alumno);
-    }//GEN-LAST:event_jbGuardarActionPerformed
+    }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         // TODO add your handling code here:
@@ -295,7 +292,7 @@ public class AgregarAlumnoView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbBuscar;
-    private javax.swing.JButton jbGuardar;
+    private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbNuevo;
     private javax.swing.JButton jbSalir;
     private com.toedter.calendar.JDateChooser jdcFechaDeNacimiento;

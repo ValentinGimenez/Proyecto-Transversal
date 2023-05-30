@@ -64,7 +64,7 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jcbSeleccionarAlumno = new javax.swing.JComboBox<>();
 
-        setTitle("Guardar Alumno");
+        setTitle("Modificar Alumno");
         setPreferredSize(new java.awt.Dimension(600, 600));
 
         jDesktopPane1.setBackground(new java.awt.Color(240, 240, 240));

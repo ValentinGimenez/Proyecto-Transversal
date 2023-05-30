@@ -36,6 +36,7 @@ public class MenuView extends javax.swing.JFrame {
         jMalumno = new javax.swing.JMenu();
         jmGuardarAlumno = new javax.swing.JMenuItem();
         jmModificarAlumno = new javax.swing.JMenuItem();
+        jmBorrarAlumno = new javax.swing.JMenuItem();
         jMmateria = new javax.swing.JMenu();
         jMformularioMateria = new javax.swing.JMenuItem();
         jMadministracion = new javax.swing.JMenu();
@@ -78,6 +79,14 @@ public class MenuView extends javax.swing.JFrame {
             }
         });
         jMalumno.add(jmModificarAlumno);
+
+        jmBorrarAlumno.setText("Borrar Alumno");
+        jmBorrarAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmBorrarAlumnoActionPerformed(evt);
+            }
+        });
+        jMalumno.add(jmBorrarAlumno);
 
         jMenuBar1.add(jMalumno);
 
@@ -166,6 +175,15 @@ public class MenuView extends javax.swing.JFrame {
         escritorio.add(modificaralumno);
     }//GEN-LAST:event_jmModificarAlumnoActionPerformed
 
+    private void jmBorrarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmBorrarAlumnoActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        BorrarAlumnoView borraralumno = new BorrarAlumnoView();
+        borraralumno.setVisible(true);
+        escritorio.add(borraralumno);
+    }//GEN-LAST:event_jmBorrarAlumnoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -214,6 +232,7 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMmanipulacionNotas;
     private javax.swing.JMenu jMmateria;
     private javax.swing.JMenu jMsalir;
+    private javax.swing.JMenuItem jmBorrarAlumno;
     private javax.swing.JMenuItem jmGuardarAlumno;
     private javax.swing.JMenuItem jmModificarAlumno;
     // End of variables declaration//GEN-END:variables
