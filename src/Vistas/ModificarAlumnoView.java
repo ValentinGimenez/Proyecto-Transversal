@@ -88,7 +88,7 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
             }
         });
 
-        jbGuardar.setText("GUARDAR");
+        jbGuardar.setText("MODIFICAR");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGuardarActionPerformed(evt);
@@ -120,7 +120,7 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,7 +185,7 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jbGuardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                         .addComponent(jbSalir)
                         .addGap(61, 61, 61))))
         );
@@ -258,8 +258,7 @@ public class ModificarAlumnoView extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "El campo nombre se encuentra vacio.");
             return;
         }
-        //alumno = new Alumno(documento, apellido, nombre, fecha, estado);
-        dataalumno.modificarAlumno(alumno);
+        dataalumno.modificarAlumno(new Alumno(((Alumno) jcbSeleccionarAlumno.getSelectedItem()).getIdAlumno(),documento, apellido, nombre, fecha, ((Alumno) jcbSeleccionarAlumno.getSelectedItem()).isEstado()));
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
