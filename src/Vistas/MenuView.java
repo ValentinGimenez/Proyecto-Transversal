@@ -142,9 +142,9 @@ public class MenuView extends javax.swing.JFrame {
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        GestionInscripcionView insc = new GestionInscripcionView();
-        insc.setVisible(true);
-        insc.add(insc);
+        GestionInscripcionView gestioninscripcion = new GestionInscripcionView();
+        gestioninscripcion.setVisible(true);
+        escritorio.add(gestioninscripcion);
         
     }//GEN-LAST:event_jMmanejoInscripcionesActionPerformed
 
