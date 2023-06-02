@@ -93,6 +93,11 @@ public class MenuView extends javax.swing.JFrame {
         jMmateria.setText("Materia");
 
         jMformularioMateria.setText("Formulario de Materia");
+        jMformularioMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMformularioMateriaActionPerformed(evt);
+            }
+        });
         jMmateria.add(jMformularioMateria);
 
         jMenuBar1.add(jMmateria);
@@ -183,6 +188,15 @@ public class MenuView extends javax.swing.JFrame {
         borraralumno.setVisible(true);
         escritorio.add(borraralumno);
     }//GEN-LAST:event_jmBorrarAlumnoActionPerformed
+
+    private void jMformularioMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMformularioMateriaActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        GestionMateriaView gestMatView = new GestionMateriaView();
+        gestMatView.setVisible(true);
+        escritorio.add(gestMatView);
+    }//GEN-LAST:event_jMformularioMateriaActionPerformed
 
     /**
      * @param args the command line arguments
