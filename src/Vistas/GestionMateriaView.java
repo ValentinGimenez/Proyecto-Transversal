@@ -188,7 +188,6 @@ public class GestionMateriaView extends javax.swing.JInternalFrame {
             return;
         }
 
-        dat = new DataMateria();
         //solo se puede modificar materias áctivas
         if (jTCodigo.getText().isEmpty()) {
             dat.guardarMateria(new Materia(nom, anio, est));

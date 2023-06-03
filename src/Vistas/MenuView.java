@@ -126,6 +126,11 @@ public class MenuView extends javax.swing.JFrame {
         jMconsultas.setText("Consultas");
 
         jMalumnosPorMateria.setText("Alumnos por materia");
+        jMalumnosPorMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMalumnosPorMateriaActionPerformed(evt);
+            }
+        });
         jMconsultas.add(jMalumnosPorMateria);
 
         jMenuBar1.add(jMconsultas);
@@ -223,6 +228,15 @@ public class MenuView extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jMsalirMouseClicked
+
+    private void jMalumnosPorMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMalumnosPorMateriaActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        AlumnosPorMateria alumPorMat = new AlumnosPorMateria();
+        alumPorMat.setVisible(true);
+        escritorio.add(alumPorMat);
+    }//GEN-LAST:event_jMalumnosPorMateriaActionPerformed
 
     /**
      * @param args the command line arguments
