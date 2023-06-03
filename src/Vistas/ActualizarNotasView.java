@@ -21,10 +21,12 @@ public class ActualizarNotasView extends javax.swing.JInternalFrame {
     private List<Incripcion> insc;
     private DataAlumno aluData = new DataAlumno();
     private DataInscripcion inscData = new DataInscripcion();
+    private DefaultTableModel modelo=new DefaultTableModel();
     
     public ActualizarNotasView() {
         initComponents();
         cargaAlumnosBox();
+        armarCabecera();
     }
 
     /**
@@ -75,6 +77,11 @@ public class ActualizarNotasView extends javax.swing.JInternalFrame {
         });
 
         jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,6 +152,11 @@ public class ActualizarNotasView extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
+
     private void agregarAlumnos(){
         
         jcboxAlumno.removeAllItems();
@@ -162,6 +174,17 @@ public class ActualizarNotasView extends javax.swing.JInternalFrame {
         for (Alumno alum : alumnos) {
             jcboxAlumno.addItem(alum);
         }
+    }
+    
+        private void armarCabecera() {
+        ArrayList titulos=new ArrayList();
+        titulos.add("ID");
+        titulos.add("Nombre");
+        titulos.add("Año");
+        for (Object titulo : titulos) {
+            modelo.addColumn(titulo);
+        }
+        jTable1.setModel(modelo);
     }
     
     
