@@ -131,6 +131,11 @@ public class MenuView extends javax.swing.JFrame {
         jMenuBar1.add(jMconsultas);
 
         jMsalir.setText("Salir");
+        jMsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMsalirActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMsalir);
 
         setJMenuBar(jMenuBar1);
@@ -203,6 +208,11 @@ public class MenuView extends javax.swing.JFrame {
         gestMatView.setVisible(true);
         escritorio.add(gestMatView);
     }//GEN-LAST:event_jMformularioMateriaActionPerformed
+
+    private void jMsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMsalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jMsalirActionPerformed
 
     /**
      * @param args the command line arguments
