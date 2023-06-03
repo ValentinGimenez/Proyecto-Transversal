@@ -131,6 +131,11 @@ public class MenuView extends javax.swing.JFrame {
         jMenuBar1.add(jMconsultas);
 
         jMsalir.setText("Salir");
+        jMsalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMsalirMouseClicked(evt);
+            }
+        });
         jMsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMsalirActionPerformed(evt);
@@ -213,6 +218,11 @@ public class MenuView extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jMsalirActionPerformed
+
+    private void jMsalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMsalirMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jMsalirMouseClicked
 
     /**
      * @param args the command line arguments
