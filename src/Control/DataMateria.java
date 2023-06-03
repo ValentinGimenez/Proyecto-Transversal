@@ -36,6 +36,7 @@ public class DataMateria {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 materia.setIdMateria(rs.getInt(1));
+                JOptionPane.showMessageDialog(null, "Materia ingresada exitosamente");
             }
             ps.close();
         } catch (SQLException ex) {

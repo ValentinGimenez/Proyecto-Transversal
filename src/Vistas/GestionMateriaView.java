@@ -15,6 +15,9 @@ import javax.swing.JOptionPane;
  */
 public class GestionMateriaView extends javax.swing.JInternalFrame {
 
+    DataMateria dat = new DataMateria();
+    Materia mat = null;
+
     /**
      * Creates new form GestionMateria
      */
@@ -178,20 +181,24 @@ public class GestionMateriaView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 
         String nom = jTNombre.getText();
-        //if(nom.length()>0){
-        //        jBGuardar.setEnabled(true);
-        //}
         Integer anio = Integer.valueOf(jTAnio.getText());
         Boolean est = jREstado.isSelected();
-        if(nom.isEmpty()){
+        if (nom.isEmpty()) {
             JOptionPane.showMessageDialog(this, "El campo nombre se encuentra vacio");
             return;
         }
 
-        Materia mat=new Materia(nom,anio,est);
-        DataMateria dat=new DataMateria();
-        
-        dat.guardarMateria(mat);
+        dat = new DataMateria();
+        //solo se puede modificar materias áctivas
+        if (jTCodigo.getText().isEmpty()) {
+            dat.guardarMateria(new Materia(nom, anio, est));
+        } else if (mat != null) {
+            mat.setNombre(nom);
+            mat.setAño(anio);
+            mat.setEstado(est);
+            dat.modificarMateria(mat);
+        }
+
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
@@ -201,26 +208,25 @@ public class GestionMateriaView extends javax.swing.JInternalFrame {
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         // TODO add your handling code here:
-        if(Integer.valueOf(jTCodigo.getText())!=null){
+        if (jTCodigo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese código de materia a borrar");
+        } else {
             Integer idMatBorr = Integer.valueOf(jTCodigo.getText());
             DataMateria datBorr = new DataMateria();
             datBorr.eliminarMateria(idMatBorr);
-        }else{
-            JOptionPane.showMessageDialog(this, "Ingrese código (Id) del alumno a borrar");
         }
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         // TODO add your handling code here:
-        if(Integer.valueOf(jTCodigo.getText())!=null){
+        if (Integer.valueOf(jTCodigo.getText()) != null) {
             Integer idMatBusc = Integer.valueOf(jTCodigo.getText());
-            DataMateria datBusc = new DataMateria();
-            Materia mat=datBusc.buscarMateria(idMatBusc);
-            jTNombre.setText(mat.getNombre());
-            jTAnio.setText(String.valueOf(mat.getAño()));
-            jREstado.setSelected(mat.isEstado());
-        }else{
-            JOptionPane.showMessageDialog(this, "Ingrese código (Id) del alumno a buscar");
+            mat = dat.buscarMateria(idMatBusc);
+            if (mat != null) {
+                jTNombre.setText(mat.getNombre());
+                jTAnio.setText(String.valueOf(mat.getAño()));
+                jREstado.setSelected(mat.isEstado());
+            }
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
