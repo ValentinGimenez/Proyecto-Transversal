@@ -20,6 +20,7 @@ public class MenuView extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setExtendedState(this.MAXIMIZED_BOTH);
+        
     }
 
     /**
@@ -150,6 +151,11 @@ public class MenuView extends javax.swing.JFrame {
 
     private void jMmanipulacionNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMmanipulacionNotasActionPerformed
         // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ActualizarNotasView anv = new ActualizarNotasView();
+        anv.setVisible(true);
+        escritorio.add(anv);
     }//GEN-LAST:event_jMmanipulacionNotasActionPerformed
 
     private void jMmanejoInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMmanejoInscripcionesActionPerformed
