@@ -98,13 +98,13 @@ public class GestionInscripcionView extends javax.swing.JInternalFrame {
 
         jtMateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "NOMBRE", "AÑO"
             }
         ));
         jScrollPane2.setViewportView(jtMateria);
@@ -180,7 +180,7 @@ public class GestionInscripcionView extends javax.swing.JInternalFrame {
         jrbInscriptas.setSelected(false);
         jbAnular.setEnabled(false);
         jbInscribir.setEnabled(true);
-        borrarFilas();
+        modelo.setRowCount(0);
         llenarTabla();
         
     }//GEN-LAST:event_jrbNoInscriptasActionPerformed
@@ -191,7 +191,7 @@ public class GestionInscripcionView extends javax.swing.JInternalFrame {
         jrbNoInscriptas.setSelected(false);
         jbAnular.setEnabled(true);
         jbInscribir.setEnabled(false);
-        borrarFilas();
+        modelo.setRowCount(0);
         llenarTabla();
     }//GEN-LAST:event_jrbInscriptasActionPerformed
 
@@ -208,7 +208,7 @@ public class GestionInscripcionView extends javax.swing.JInternalFrame {
         }else{
             JOptionPane.showMessageDialog(this, "Usted debe seleccionar una materia");
         }
-        borrarFilas();
+        modelo.setRowCount(0);
     }//GEN-LAST:event_jbInscribirActionPerformed
 
     private void jbAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAnularActionPerformed
@@ -218,7 +218,7 @@ public class GestionInscripcionView extends javax.swing.JInternalFrame {
         if (filaSel !=-1) {
             int idM=(Integer)modelo.getValueAt(filaSel, 0);
             inscData.borrarInscripcionMateriaAlumno(alumSel.getIdAlumno(), idM);
-            borrarFilas();
+            modelo.setRowCount(0);
         }else{
             JOptionPane.showMessageDialog(this, "Usted debe seleccionar una materia");
         }
@@ -275,13 +275,6 @@ public class GestionInscripcionView extends javax.swing.JInternalFrame {
             for (Materia m: materias) {
                 modelo.addRow(new Object[]{m.getIdMateria(),m.getNombre(),m.getAño()});
             }
-        }
-    }
-    
-    private void borrarFilas(){
-        int filas=modelo.getRowCount()-1;
-        for (int i = filas; i >= 0; i--) {
-            modelo.removeRow(i);
         }
     }
 }
