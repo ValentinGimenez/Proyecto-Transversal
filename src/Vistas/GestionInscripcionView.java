@@ -21,7 +21,6 @@ public class GestionInscripcionView extends javax.swing.JInternalFrame {
     
     private DataInscripcion inscData=new DataInscripcion();
     private DataAlumno alumData=new DataAlumno();
-    
     private DefaultTableModel modelo=new DefaultTableModel();
 
     public GestionInscripcionView() {
@@ -281,7 +280,7 @@ public class GestionInscripcionView extends javax.swing.JInternalFrame {
     
     private void borrarFilas(){
         int filas=modelo.getRowCount()-1;
-        for (int i = filas; i > 0; i--) {
+        for (int i = filas; i >= 0; i--) {
             modelo.removeRow(i);
         }
     }
