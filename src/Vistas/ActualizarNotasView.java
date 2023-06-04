@@ -133,7 +133,6 @@ public class ActualizarNotasView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jcboxAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcboxAlumnoActionPerformed
-        // TODO add your handling code here:
         insc = inscData.obtenerInscripcionesPorAlumno(((Alumno) jcboxAlumno.getSelectedItem()).getIdAlumno());
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setRowCount(0);
@@ -148,7 +147,10 @@ public class ActualizarNotasView extends javax.swing.JInternalFrame {
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < jTable1.getRowCount(); i++) {
-            inscData.actualizarNota(((Alumno) jcboxAlumno.getSelectedItem()).getIdAlumno(), Integer.parseInt(jTable1.getValueAt(i, 0).toString()), Double.parseDouble(jTable1.getValueAt(i, 2).toString()));
+            int idAlumno = ((Alumno) jcboxAlumno.getSelectedItem()).getIdAlumno();
+            int idMateria = Integer.parseInt(jTable1.getValueAt(i, 0).toString());
+            double nota = Double.parseDouble(jTable1.getValueAt(i, 2).toString());
+            inscData.actualizarNota(idAlumno, idMateria, nota);
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
@@ -157,22 +159,13 @@ public class ActualizarNotasView extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
-    private void agregarAlumnos() {
-
-        jcboxAlumno.removeAllItems();
-        this.alumnos = (ArrayList<Alumno>) aluData.listarAlumnos();
-
-        for (Alumno alum : alumnos) {
-            jcboxAlumno.addItem(alum);
-        }
-
-    }
-
     private void cargaAlumnosBox() {
         jcboxAlumno.removeAllItems();
         this.alumnos = aluData.listarAlumnos();
         for (Alumno alum : alumnos) {
-            jcboxAlumno.addItem(alum);
+            if (alum.isEstado() == true) {
+                jcboxAlumno.addItem(alum);
+            }
         }
     }
 
